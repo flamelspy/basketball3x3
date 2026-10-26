@@ -19,6 +19,12 @@ npm run preview
 
 A pasta `dist/` contém a versão estática para hospedar em um servidor HTTP. Não abra `index.html` diretamente pelo protocolo de arquivos. Não há hospedagem pública configurada nesta entrega.
 
+## Arquivo HTML único
+
+Execute `npm run build:html` para gerar `exports/basketball3x3_v0.1.1.html`. Este arquivo pode ser aberto diretamente no navegador, sem servidor, CDN ou conexão à internet. Three.js, Rapier/WebAssembly, código e estilos estão incorporados. Requer navegador com WebGL 2 e WebAssembly; visualizadores simples de anexos podem não executar o jogo.
+
+O teste do HTML independente foi realizado com a rede desabilitada, abertura por `file://`, arremesso, pausa e controles mobile emulados, sem erros de JavaScript nem requisições externas. Testes em aparelhos físicos continuam pendentes.
+
 ## Controles
 
 | Ação | Teclado | Controle padrão | Toque |

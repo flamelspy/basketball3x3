@@ -1,0 +1,18 @@
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+const root = resolve(import.meta.dirname, '..');
+const output = resolve(root, 'exports');
+let html = await readFile(resolve(root, 'dist/index.html'), 'utf8');
+const js = html.match(/<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/script>/);
+const css = html.match(/<link\b[^>]*\bhref="([^"]+\.css)"[^>]*>/);
+if (!js || !css) throw new Error('Build Vite incompleto: execute npm run build primeiro.');
+const code = await readFile(resolve(root, 'dist', js[1].replace(/^\.\//, '')), 'utf8');
+const styles = await readFile(resolve(root, 'dist', css[1].replace(/^\.\//, '')), 'utf8');
+html = html.replace(js[0], () => `<script type="module">${code.replace(/<\/script/gi, '<\\/script')}</script>`);
+html = html.replace(css[0], () => `<style>${styles.replace(/<\/style/gi, '<\\/style')}</style>`);
+const notes = await readFile(resolve(root, 'NOTAS-DO-PROJETO.md'), 'utf8');
+html = html.replace('</body>', () => `<script type="application/json" id="project-notes">${JSON.stringify(notes).replace(/</g, '\\u003c')}</script></body>`);
+await mkdir(output, { recursive: true });
+const file = resolve(output, 'basketball3x3_v0.1.1.html');
+await writeFile(file, html);
+console.log(`HTML independente: ${file} (${Buffer.byteLength(html)} bytes)`);

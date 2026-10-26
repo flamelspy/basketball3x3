@@ -1,5 +1,16 @@
 # Notas do projeto — Basketball 3x3
 
+## v0.1.1 — distribuição HTML independente
+
+Data de referência: 25/10/2026 (America/Sao_Paulo).
+
+- Adicionado `npm run build:html`, que gera um único HTML com Three.js, Rapier/WASM, código e estilos incorporados.
+- Não requer CDN, servidor HTTP ou Node.js para executar o arquivo exportado.
+- Notas do projeto incorporadas no HTML como JSON de texto.
+- Código de gameplay preservado nesta etapa de empacotamento.
+- Verificação em Chromium com rede desabilitada e protocolo file://: inicialização, arremesso, pausa e controles mobile emulados aprovados, sem erros de JavaScript e sem requisições externas.
+- A versão modular continua disponível para desenvolvimento e hospedagem.
+
 ## v0.1.0 — laboratório 1x1
 
 Data de referência da entrega: 25/10/2026 (America/Sao_Paulo).

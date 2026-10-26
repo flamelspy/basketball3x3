@@ -27,6 +27,14 @@ npm run preview
 
 A versão de produção é gerada em `dist/`. Ainda não há um endereço público de jogo configurado.
 
+## HTML independente
+
+```sh
+npm run build:html
+```
+
+Gera `exports/basketball3x3_v0.1.1.html`, com JavaScript, CSS e física WebAssembly incorporados. Abra o arquivo em um navegador moderno, sem servidor ou instalação de dependências para jogar. O navegador precisa oferecer WebGL 2 e WebAssembly. Alguns visualizadores de arquivos do celular não executam HTML; abra no navegador.
+
 ## Visão
 
 Criar partidas em que posicionamento, timing, habilidades individuais e composição do trio determinem as oportunidades de ataque e defesa. Começar com um laboratório offline 1x1, evoluir para 3x3 com IA e implementar multiplayer em uma fase posterior.
