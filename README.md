@@ -2,7 +2,30 @@
 
 Projeto de jogo de basquete 3x3 com construção de jogadores, arquétipos derivados do biotipo e das habilidades, confrontos entre estilos e ações baseadas em animações com tempo e alcance definidos.
 
-**Estado:** planejamento inicial. Ainda não há protótipo executável, motor escolhido ou multiplayer implementado.
+**Estado:** laboratório 1x1 v0.1.0 implementado em Three.js + TypeScript + Rapier. Multiplayer e partida 3x3 ainda não implementados.
+
+## Rodar o protótipo
+
+Requer Node.js 22.12+ (ou 20.19+).
+
+```sh
+npm ci
+npm run dev
+```
+
+Use WASD para mover, segure e solte Espaço para arremessar, F para enterrar e E para contestar no modo de defesa. Também há controles por toque e suporte inicial a gamepad.
+
+Ajustes permite alternar ataque/defesa, escolher quatro perfis sintéticos e desativar a marcação automática. O treino exibe alcance, fase de ação, energia e timing.
+
+Veja [controles, arquitetura e limitações](docs/PROTOTIPO.md) e [notas da versão](NOTAS-DO-PROJETO.md).
+
+```sh
+npm test
+npm run build
+npm run preview
+```
+
+A versão de produção é gerada em `dist/`. Ainda não há um endereço público de jogo configurado.
 
 ## Visão
 
@@ -28,7 +51,7 @@ Criar partidas em que posicionamento, timing, habilidades individuais e composi�
 - Meia quadra, uma cesta, partidas até 21 pontos e cestas de 1 e 2 pontos.
 - Posse inicial de 12 segundos, configurável.
 - Um jogador controlado e dois companheiros com IA no modo offline.
-- Controle, plataforma-alvo, motor gráfico e direção de arte.
+- Direção de arte final. Base técnica escolhida: navegador, Three.js, TypeScript, Rapier; teclado, toque e suporte inicial a controle.
 - Temporada ou fase da carreira usada para representar cada referência histórica.
 - Lista definitiva dos 100 atletas e método de conversão das habilidades em atributos.
 
@@ -130,17 +153,18 @@ Compartilhar uma biblioteca de movimentos com combinações e parâmetros indivi
 
 ## Próximas tarefas
 
-- [ ] Escolher plataforma-alvo e motor.
-- [ ] Definir esquema de controles.
+- [x] Escolher plataforma-alvo e motor: navegador / Three.js.
+- [x] Definir controles iniciais de teclado, toque e gamepad.
 - [ ] Fechar regras do primeiro protótipo.
 - [ ] Especificar dados de jogador e ação.
 - [ ] Definir a máquina de estados de posse e movimentos.
-- [ ] Implementar o laboratório 1x1.
-- [ ] Criar ferramentas para visualizar alcance, contato e timing.
+- [x] Implementar o laboratório inicial 1x1 (escopo e limitações em docs/PROTOTIPO.md).
+- [x] Visualizar alcance e timing.
+- [ ] Ampliar a inspeção visual de contato.
 - [ ] Definir métricas de teste dos arquétipos.
 
 ## Histórico
 
 - 2026-10-25: planejamento inicial e roadmap registrados; preservação do biotipo e do perfil esportivo das referências confirmada, com alteração de nome e aparência.
 
-Nenhum teste de gameplay foi realizado nesta etapa documental.
+A versão inicial possui testes automatizados de regras. Consulte as notas da versão para a validação realizada e as limitações.
